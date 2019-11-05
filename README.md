@@ -47,7 +47,7 @@ HTTPClient.get(url: string): Promise<XMLHttpRequest>
 Conveniently parse the response from an earlier request expected to resolve to JSON data.
 
 ```typescript
-HTTPClient.json<T = {}>(req: XMLHttpRequest): Object<T>
+HTTPClient.json<T = any>(req: XMLHttpRequest): T;
 ```
 
 #### `put`
