@@ -26,7 +26,7 @@ interface CurrencyConversion {
 const endpointUrl = "https://api.exchangeratesapi.io/latest?symbols=USD,GBP";
 
 const req = await HTTPClient.get(endpointUrl);
-const data = await HTTPClient.json<CurrencyConversion>(req);
+const data = HTTPClient.json<CurrencyConversion>(req);
 
 console.log(data)
 //{"rates":{"USD":1.1158,"GBP":0.86368},"base":"EUR","date":"2019-11-04"
@@ -39,7 +39,7 @@ console.log(data)
 Perform a HTTP `get` request.
 
 ```typescript
-HTTPClient.get(url: string): Promise<XMLHttpRequest>
+HTTPClient.get(url: string, opts?: HTTPClient.Opts): Promise<XMLHttpRequest>
 ```
 
 #### `json`
@@ -55,7 +55,7 @@ HTTPClient.json<T = any>(req: XMLHttpRequest): T;
 Perform a HTTP `put` request.
 
 ```typescript
-HTTPClient.put(url: string): Promise<XMLHttpRequest>
+HTTPClient.put(url: string, opts?: HTTPClient.Opts): Promise<XMLHttpRequest>
 ```
 
 #### `delete`
@@ -63,5 +63,14 @@ HTTPClient.put(url: string): Promise<XMLHttpRequest>
 Perform a HTTP `delete` request.
 
 ```typescript
-HTTPClient.delete(url: string): Promise<XMLHttpRequest>
+HTTPClient.delete(url: string, opts?: HTTPClient.Opts): Promise<XMLHttpRequest>
+```
+
+---
+
+#### Options
+
+```typescript
+withCredentials?: boolean;
+responseType?: XMLHttpRequestResponseType;
 ```
