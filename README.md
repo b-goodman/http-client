@@ -16,7 +16,6 @@ yarn add @bgoodman/http-client
 ```typescript
 import {HTTPClient} from "http-client"
 
-...
 interface CurrencyConversion {
     rates: {[currency: string]: number};
     base: string;
