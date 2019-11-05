@@ -1,6 +1,6 @@
 # HTTPClient
 
-An async HTTP Client implemeting `Window.XMLHttpRequest`.
+An async HTTP Client implementing `Window.XMLHttpRequest`.
 Intended to imitate the `Window.fetch` API but still offering full backards compatability with legacy browsers.
 
 ## Installation
