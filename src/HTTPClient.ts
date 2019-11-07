@@ -1,16 +1,21 @@
+enum HTTPMethod {
+    GET = "get",
+    POST = "post",
+    DELETE = "delete",
+}
 
 export abstract class HTTPClient {
 
     public static get(url: string, opts?: HTTPClient.Opts){
-        return HTTPClient.request("get", url, opts)
+        return HTTPClient.request(HTTPMethod.POST, url, null, opts)
     }
 
-    public static post(url: string, opts?: HTTPClient.Opts){
-        return HTTPClient.request("post", url, opts)
+    public static post(url: string, data: FormData, opts?: HTTPClient.Opts){
+        return HTTPClient.request(HTTPMethod.POST, url, data, opts)
     }
 
-    public static delete(url: string, opts?: HTTPClient.Opts){
-        return HTTPClient.request("delete", url, opts)
+    public static delete(url: string, data: FormData, opts?: HTTPClient.Opts){
+        return HTTPClient.request(HTTPMethod.DELETE, url, data, opts)
     }
 
     public static json<T = any>(resp: XMLHttpRequest) {
@@ -18,7 +23,7 @@ export abstract class HTTPClient {
         return json;
     }
 
-    private static request(method: "get"|"post"|"delete", url: string, opts?: HTTPClient.Opts ) {
+    private static request(method: HTTPMethod, url: string, data: FormData | null, opts?: HTTPClient.Opts ) {
 
         return new Promise<XMLHttpRequest>( (resolve, reject) => {
 
@@ -40,7 +45,7 @@ export abstract class HTTPClient {
             xhr.open(method, url);
 
             try{
-                xhr.send(null);
+                xhr.send(data);
             } catch (err) {
                 reject(err);
             }

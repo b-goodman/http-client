@@ -1,7 +1,7 @@
 export declare abstract class HTTPClient {
     static get(url: string, opts?: HTTPClient.Opts): Promise<XMLHttpRequest>;
-    static post(url: string, opts?: HTTPClient.Opts): Promise<XMLHttpRequest>;
-    static delete(url: string, opts?: HTTPClient.Opts): Promise<XMLHttpRequest>;
+    static post(url: string, data: FormData, opts?: HTTPClient.Opts): Promise<XMLHttpRequest>;
+    static delete(url: string, data: FormData, opts?: HTTPClient.Opts): Promise<XMLHttpRequest>;
     static json<T = any>(resp: XMLHttpRequest): T;
     private static request;
 }

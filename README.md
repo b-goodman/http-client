@@ -49,12 +49,12 @@ Conveniently parse the response from an earlier request expected to resolve to J
 HTTPClient.json<T = any>(req: XMLHttpRequest): T;
 ```
 
-#### `put`
+#### `post`
 
-Perform a HTTP `put` request.
+Perform a HTTP `post` request.
 
 ```typescript
-HTTPClient.put(url: string, opts?: HTTPClient.Opts): Promise<XMLHttpRequest>
+HTTPClient.post(url: string, data: FormData, opts?: HTTPClient.Opts): Promise<XMLHttpRequest>
 ```
 
 #### `delete`
@@ -62,7 +62,7 @@ HTTPClient.put(url: string, opts?: HTTPClient.Opts): Promise<XMLHttpRequest>
 Perform a HTTP `delete` request.
 
 ```typescript
-HTTPClient.delete(url: string, opts?: HTTPClient.Opts): Promise<XMLHttpRequest>
+HTTPClient.delete(url: string, data: FormData, opts?: HTTPClient.Opts): Promise<XMLHttpRequest>
 ```
 
 ---

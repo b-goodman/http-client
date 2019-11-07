@@ -1,2 +1,2 @@
-export * from "./HTTPRequest";
+export * from "./HTTPClient";
 //# sourceMappingURL=index.js.map

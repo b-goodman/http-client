@@ -2,19 +2,17 @@
   "name": "@bgoodman/http-client",
   "version": "1.0.0",
   "license": "MIT",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "typings": "dist/index.d.ts",
+  "main": "dist/src/index.js",
+  "module": "dist/src/index.js",
+  "typings": "dist/src/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "build": "npm-run-all -s clean tsc",
-    "clean": "rimraf ./dist",
+    "build": "rimraf ./dist && tsc",
     "test": "./node_modules/.bin/jest"
   },
   "devDependencies": {
-    "npm-run-all": "^4.1.5",
     "rimraf": "^3.0.0",
     "typescript": "^3.6.4",
     "@types/jest": "^24.0.21",

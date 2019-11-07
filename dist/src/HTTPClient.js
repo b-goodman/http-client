@@ -1,20 +1,26 @@
+var HTTPMethod;
+(function (HTTPMethod) {
+    HTTPMethod["GET"] = "get";
+    HTTPMethod["POST"] = "post";
+    HTTPMethod["DELETE"] = "delete";
+})(HTTPMethod || (HTTPMethod = {}));
 var HTTPClient = /** @class */ (function () {
     function HTTPClient() {
     }
     HTTPClient.get = function (url, opts) {
-        return HTTPClient.request("get", url, opts);
+        return HTTPClient.request(HTTPMethod.POST, url, null, opts);
     };
-    HTTPClient.post = function (url, opts) {
-        return HTTPClient.request("post", url, opts);
+    HTTPClient.post = function (url, data, opts) {
+        return HTTPClient.request(HTTPMethod.POST, url, data, opts);
     };
-    HTTPClient.delete = function (url, opts) {
-        return HTTPClient.request("delete", url, opts);
+    HTTPClient.delete = function (url, data, opts) {
+        return HTTPClient.request(HTTPMethod.DELETE, url, data, opts);
     };
     HTTPClient.json = function (resp) {
         var json = JSON.parse(resp.responseText);
         return json;
     };
-    HTTPClient.request = function (method, url, opts) {
+    HTTPClient.request = function (method, url, data, opts) {
         return new Promise(function (resolve, reject) {
             var tID = window.setTimeout(function () {
                 reject(new Error("Request timeout"));
@@ -30,7 +36,7 @@ var HTTPClient = /** @class */ (function () {
             });
             xhr.open(method, url);
             try {
-                xhr.send(null);
+                xhr.send(data);
             }
             catch (err) {
                 reject(err);
@@ -40,4 +46,4 @@ var HTTPClient = /** @class */ (function () {
     return HTTPClient;
 }());
 export { HTTPClient };
-//# sourceMappingURL=HTTPRequest.js.map
+//# sourceMappingURL=HTTPClient.js.map
