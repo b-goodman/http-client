@@ -9,5 +9,6 @@ export declare namespace HTTPClient {
     interface Opts {
         withCredentials?: boolean;
         responseType?: XMLHttpRequestResponseType;
+        requestHeaders?: Map<string, string>;
     }
 }

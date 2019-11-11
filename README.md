@@ -14,7 +14,7 @@ yarn add @bgoodman/http-client
 ## Usage
 
 ```typescript
-import {HTTPClient} from "http-client"
+import {HTTPClient} from "@bgoodman/http-client"
 
 interface CurrencyConversion {
     rates: {[currency: string]: number};
@@ -72,4 +72,5 @@ HTTPClient.delete(url: string, data: FormData, opts?: HTTPClient.Opts): Promise<
 ```typescript
 withCredentials?: boolean;
 responseType?: XMLHttpRequestResponseType;
+requestHeaders?: Map<string, string>
 ```

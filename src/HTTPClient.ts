@@ -32,6 +32,7 @@ export abstract class HTTPClient {
             }, 15000 );
 
             const xhr = new XMLHttpRequest();
+
             xhr.withCredentials = opts ? opts.withCredentials || false : false;
             xhr.responseType = opts ? opts.responseType || "" : "";
 
@@ -43,6 +44,12 @@ export abstract class HTTPClient {
             });
 
             xhr.open(method, url);
+
+            if (opts && opts.requestHeaders) {
+                opts.requestHeaders.forEach( (header, value) => {
+                    xhr.setRequestHeader(header, value);
+                });
+            };
 
             try{
                 xhr.send(data);
@@ -59,6 +66,7 @@ export namespace HTTPClient {
     export interface Opts {
         withCredentials?: boolean;
         responseType?: XMLHttpRequestResponseType;
+        requestHeaders?: Map<string, string>
     }
 
 }
