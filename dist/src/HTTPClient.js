@@ -8,7 +8,7 @@ var HTTPClient = /** @class */ (function () {
     function HTTPClient() {
     }
     HTTPClient.get = function (url, opts) {
-        return HTTPClient.request(HTTPMethod.POST, url, null, opts);
+        return HTTPClient.request(HTTPMethod.GET, url, null, opts);
     };
     HTTPClient.post = function (url, data, opts) {
         return HTTPClient.request(HTTPMethod.POST, url, data, opts);

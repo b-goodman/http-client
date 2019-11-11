@@ -7,7 +7,7 @@ enum HTTPMethod {
 export abstract class HTTPClient {
 
     public static get(url: string, opts?: HTTPClient.Opts){
-        return HTTPClient.request(HTTPMethod.POST, url, null, opts)
+        return HTTPClient.request(HTTPMethod.GET, url, null, opts)
     }
 
     public static post(url: string, data: FormData, opts?: HTTPClient.Opts){

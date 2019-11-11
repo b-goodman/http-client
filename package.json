@@ -1,6 +1,6 @@
 {
   "name": "@bgoodman/http-client",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "license": "MIT",
   "main": "dist/src/index.js",
   "module": "dist/src/index.js",
