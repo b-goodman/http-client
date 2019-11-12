@@ -22,15 +22,15 @@ var HTTPClient = /** @class */ (function () {
     };
     HTTPClient.request = function (method, url, data, opts) {
         return new Promise(function (resolve, reject) {
-            var tID = window.setTimeout(function () {
-                reject(new Error("Request timeout"));
-            }, 15000);
+            // const tID = window.setTimeout( () => {
+            //     reject( new Error("Request timeout") );
+            // }, 15000 );
             var xhr = new XMLHttpRequest();
             xhr.withCredentials = opts ? opts.withCredentials || false : false;
             xhr.responseType = opts ? opts.responseType || "" : "";
             xhr.addEventListener("readystatechange", function () {
                 if (this.readyState === 4) {
-                    window.clearTimeout(tID);
+                    // window.clearTimeout(tID);
                     resolve(this);
                 }
             });
@@ -41,6 +41,8 @@ var HTTPClient = /** @class */ (function () {
                 });
             }
             ;
+            var timeoutValue = opts ? opts.timeout || 0 : 0;
+            xhr.timeout = timeoutValue;
             try {
                 xhr.send(data);
             }

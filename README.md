@@ -72,5 +72,6 @@ HTTPClient.delete(url: string, data: FormData, opts?: HTTPClient.Opts): Promise<
 ```typescript
 withCredentials?: boolean;
 responseType?: XMLHttpRequestResponseType;
-requestHeaders?: Map<string, string>
+requestHeaders?: Map<string, string>;
+timeout?: number;
 ```

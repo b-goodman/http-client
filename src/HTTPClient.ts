@@ -27,9 +27,9 @@ export abstract class HTTPClient {
 
         return new Promise<XMLHttpRequest>( (resolve, reject) => {
 
-            const tID = window.setTimeout( () => {
-                reject( new Error("Request timeout") );
-            }, 15000 );
+            // const tID = window.setTimeout( () => {
+            //     reject( new Error("Request timeout") );
+            // }, 15000 );
 
             const xhr = new XMLHttpRequest();
 
@@ -38,7 +38,7 @@ export abstract class HTTPClient {
 
             xhr.addEventListener("readystatechange", function () {
                 if (this.readyState === 4) {
-                    window.clearTimeout(tID);
+                    // window.clearTimeout(tID);
                     resolve(this)
                 }
             });
@@ -50,6 +50,9 @@ export abstract class HTTPClient {
                     xhr.setRequestHeader(header, value);
                 });
             };
+
+            const timeoutValue = opts ? opts.timeout || 0 : 0;
+            xhr.timeout = timeoutValue;
 
             try{
                 xhr.send(data);
@@ -66,7 +69,8 @@ export namespace HTTPClient {
     export interface Opts {
         withCredentials?: boolean;
         responseType?: XMLHttpRequestResponseType;
-        requestHeaders?: Map<string, string>
+        requestHeaders?: Map<string, string>;
+        timeout?: number;
     }
 
 }

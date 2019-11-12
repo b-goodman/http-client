@@ -10,5 +10,6 @@ export declare namespace HTTPClient {
         withCredentials?: boolean;
         responseType?: XMLHttpRequestResponseType;
         requestHeaders?: Map<string, string>;
+        timeout?: number;
     }
 }

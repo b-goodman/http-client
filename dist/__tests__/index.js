@@ -62,4 +62,28 @@ it("Parses JSON data", function () { return __awaiter(void 0, void 0, void 0, fu
         }
     });
 }); });
+it("Ignores default timeout", function () { return __awaiter(void 0, void 0, void 0, function () {
+    var req;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, HTTPClient.get(endpointUrl, { timeout: 0 })];
+            case 1:
+                req = _a.sent();
+                expect(req).toBeDefined();
+                return [2 /*return*/];
+        }
+    });
+}); });
+it("Timeouts after user definition", function () { return __awaiter(void 0, void 0, void 0, function () {
+    var req;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, HTTPClient.get(endpointUrl, { timeout: 1 })];
+            case 1:
+                req = _a.sent();
+                expect(req).toBeDefined();
+                return [2 /*return*/];
+        }
+    });
+}); });
 //# sourceMappingURL=index.js.map
