@@ -46,8 +46,8 @@ export abstract class HTTPClient {
             xhr.open(method, url);
 
             if (opts && opts.requestHeaders) {
-                opts.requestHeaders.forEach( (value, header) => {
-                    xhr.setRequestHeader(header, value);
+                opts.requestHeaders.forEach( (value, key) => {
+                    xhr.setRequestHeader(key, value);
                 });
             };
 
