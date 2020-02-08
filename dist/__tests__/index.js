@@ -38,52 +38,25 @@ import { HTTPClient } from "../src";
 var endpointUrl = "https://api.exchangeratesapi.io/latest?symbols=USD,GBP";
 // const data = await HTTPClient.json<CurrencyConversion>(req);
 it("Performs GET requests", function () { return __awaiter(void 0, void 0, void 0, function () {
-    var req;
     return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, HTTPClient.get(endpointUrl)];
-            case 1:
-                req = _a.sent();
-                expect(req).toBeDefined();
-                return [2 /*return*/];
-        }
+        HTTPClient.get(endpointUrl).then(function (req) {
+            expect(req).toBeDefined();
+        });
+        return [2 /*return*/];
     });
 }); });
 it("Parses JSON data", function () { return __awaiter(void 0, void 0, void 0, function () {
-    var req, data;
     return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, HTTPClient.get(endpointUrl)];
-            case 1:
-                req = _a.sent();
-                data = HTTPClient.json(req);
-                expect(data).toBeDefined();
-                return [2 /*return*/];
-        }
+        HTTPClient.get(endpointUrl).then(function (req) {
+            var data = HTTPClient.json(req);
+            expect(data).toBeDefined();
+        });
+        return [2 /*return*/];
     });
 }); });
-it("Ignores default timeout", function () { return __awaiter(void 0, void 0, void 0, function () {
-    var req;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, HTTPClient.get(endpointUrl, { timeout: 0 })];
-            case 1:
-                req = _a.sent();
-                expect(req).toBeDefined();
-                return [2 /*return*/];
-        }
-    });
-}); });
-it("Timeouts after user definition", function () { return __awaiter(void 0, void 0, void 0, function () {
-    var req;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, HTTPClient.get(endpointUrl, { timeout: 1 })];
-            case 1:
-                req = _a.sent();
-                expect(req).toBeDefined();
-                return [2 /*return*/];
-        }
-    });
-}); });
+// it("Timeouts after user definition", async () => {
+//     HTTPClient.get(endpointUrl, {timeout: 1}).then( (req) => {
+//         expect(req).toBeDefined();
+//     })
+// });
 //# sourceMappingURL=index.js.map

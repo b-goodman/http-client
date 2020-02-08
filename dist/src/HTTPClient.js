@@ -36,8 +36,8 @@ var HTTPClient = /** @class */ (function () {
             });
             xhr.open(method, url);
             if (opts && opts.requestHeaders) {
-                opts.requestHeaders.forEach(function (value, header) {
-                    xhr.setRequestHeader(header, value);
+                opts.requestHeaders.forEach(function (value, key) {
+                    xhr.setRequestHeader(key, value);
                 });
             }
             ;
